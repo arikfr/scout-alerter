@@ -15,7 +15,7 @@ post '/scout' do
   states = {"end"=>"Ended", "start"=>"started"}
   if payload
     json = JSON.parse(payload)
-    message = "#{json['server_hostname']}|#{json['plugin_name']}|#{states[json['lifecycle']]}: " + json['title'].strip
+    message = "#{json['server_hostname']}]#{json['plugin_name']}]#{states[json['lifecycle']]}: " + json['title'].strip
     send_message('972542186395', message)
   end
 end
