@@ -5,5 +5,5 @@ get '/' do
 end
 
 post '/scout' do
-  puts params[:payload]
+  puts "received: #{params[:payload]}"
 end
