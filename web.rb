@@ -6,6 +6,10 @@ get '/' do
     "Hello, world"
 end
 
+get 'test_message' do
+  send_message('972542186395', 'Testing.')
+end
+
 post '/scout' do
   payload = params[:payload]
   states = {"end"=>"Ended", "start"=>"started"}
