@@ -6,7 +6,7 @@ get '/' do
     "Hello, world"
 end
 
-get 'test_message' do
+get '/test_message' do
   send_message('972542186395', 'Testing.')
 end
 
