@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'json'
+require 'redis'
 require_relative 'sms.rb'
 require_relative './lib/alert.rb'
 
