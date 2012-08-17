@@ -42,4 +42,14 @@ EOF
       Alert.new(end_payload).message.should include('Ended')
     end
   end
+
+  describe "#needs_delivery?" do
+    it "returns true if hostname isn't in filtered host list" do
+      Alert.new(payload).needs_delivery?(['test']).should be_true
+    end
+
+    it "returns false if hostname is in filtered host list" do
+      Alert.new(payload).needs_delivery?(['test', 'blade']).should be_false
+    end
+  end
 end
