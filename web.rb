@@ -12,7 +12,8 @@ get '/' do
 end
 
 get '/test_message' do
-  send_message('972542186395', 'Testing.')
+  recipients = REDIS.get('recipients').split(',')
+  send_message(recipients, 'Scout Alerter: test message.')
 end
 
 post '/scout' do
