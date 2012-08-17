@@ -21,6 +21,6 @@ post '/scout' do
   recipients = REDIS.get('recipients').split(',')
   if payload
     alert = Alert.new(payload)
-    send_message(recipients, alert.message) if alert.needs_deliver?(filtered_hostnames)
+    send_message(recipients, alert.message) if alert.needs_delivery?(filtered_hostnames)
   end
 end
