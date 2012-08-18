@@ -13,7 +13,7 @@ end
 
 get '/test_message' do
   recipients = REDIS.get('recipients').split(',')
-  send_message(recipients, 'Scout Alerter: test message.')
+  send_message(recipients, 'Scout Alerter: test message (let Arik know you received it).')
 end
 
 post '/scout' do
