@@ -8,7 +8,7 @@ uri = URI.parse(ENV["REDISTOGO_URL"])
 REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
 
 get '/' do
-    "Hello, world"
+  "Hello, world"
 end
 
 get '/test_message' do
