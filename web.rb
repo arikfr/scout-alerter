@@ -9,7 +9,7 @@ REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.passwor
 
 def notify(message)
   recipients = REDIS.get('recipients').split(',')
-  recipients.split(',').each do |recipient|
+  recipients.each do |recipient|
     send_message(recipient, message)
   end
 end
