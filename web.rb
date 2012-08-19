@@ -7,13 +7,19 @@ require_relative './lib/alert.rb'
 uri = URI.parse(ENV["REDISTOGO_URL"])
 REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
 
+def notify(message)
+  recipients = REDIS.get('recipients').split(',')
+  recipients.split(',').each do |recipient|
+    send_message(recipient, message)
+  end
+end
+
 get '/' do
   "Hello, world"
 end
 
 get '/test_message' do
-  recipients = REDIS.get('recipients').split(',')
-  send_message(recipients, 'Scout Alerter: test message (let Arik know you received it).')
+  notify('Scout Alerter: test message (let Arik know you received it).')
 end
 
 post '/scout' do
@@ -22,6 +28,6 @@ post '/scout' do
   recipients = REDIS.get('recipients').split(',')
   if payload
     alert = Alert.new(payload)
-    send_message(recipients, alert.message) if alert.needs_delivery?(filtered_hostnames)
+    notify(alert.message) if alert.needs_delivery?(filtered_hostnames)
   end
 end
