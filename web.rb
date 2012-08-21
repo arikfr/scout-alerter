@@ -15,7 +15,7 @@ def notify(message)
 end
 
 get '/' do
-  "Scout Alerter."
+  "Nothign to see here, move along."
 end
 
 get '/test_message' do
