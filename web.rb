@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'json'
 require 'redis'
+require 'boxcar_api'
+
 require_relative 'sms.rb'
 require_relative './lib/alert.rb'
 
@@ -8,10 +10,14 @@ uri = URI.parse(ENV["REDISTOGO_URL"])
 REDIS = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
 
 def notify(message)
-  recipients = REDIS.get('recipients').split(',')
-  recipients.each do |recipient|
-    send_message(recipient, message)
-  end
+  #recipients = REDIS.get('recipients').split(',')
+  #recipients.each do |recipient|
+    #send_message(recipient, message)
+  #end
+  #send_message(recipients.first, message)
+
+  provider = BoxcarAPI::Provider.new(ENV['BOXCAR_KEY'], ENV['BOXCAR_SECRET'])
+  provider.broadcast(message)
 end
 
 get '/' do
