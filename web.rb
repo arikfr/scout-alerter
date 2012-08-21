@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'sinatra'
 require 'json'
 require 'redis'
@@ -25,7 +26,12 @@ get '/' do
 end
 
 get '/test_message' do
-  notify('Scout Alerter: test message (let Arik know you received it).')
+  if params[:arik]
+    provider = BoxcarAPI::Provider.new(ENV['BOXCAR_KEY'], ENV['BOXCAR_SECRET'])
+    provider.broadcast('☁☂ Scout Alerter: test message (let Arik know you received it).')
+  else
+    notify('☁☂ Scout Alerter: test message (let Arik know you received it).')
+  end
 end
 
 post '/scout' do

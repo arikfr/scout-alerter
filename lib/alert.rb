@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'json'
 
 class Alert
@@ -7,8 +8,8 @@ class Alert
   end
 
   def message
-    states = {"end" => "Ended", "start" => "Started"}
-    message = "#{@json['server_hostname']}>#{@json['plugin_name']}>#{states[@json['lifecycle']]}: " + @json['title'].strip
+    states = {"end" => "☀ Ended:", "start" => "☁ Started:"}
+    message = "[#{@json['server_hostname']}][#{@json['plugin_name']}]#{states[@json['lifecycle']]}: " + @json['title'].strip
   end
 
   def needs_delivery?(hostnames)
