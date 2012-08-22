@@ -9,7 +9,7 @@ Simple app to recieve webhooks calls from Scout and send alerts via Boxcar. Can 
 
 Clone the repository, and create a new Heroku app:
 
-```
+```shell
 $ heroku create
 ```
 
@@ -21,13 +21,13 @@ $ heroku set BOXCAR_KEY=… BOXCAR_SECRET=…
 
 Add RedisToGo addon:
 
-```
+```shell
 $ heroku addons:add redistogo:nano
 ```
 
 Deploy:
 
-```
+```shell
 $ git push heroku master
 ```
 
