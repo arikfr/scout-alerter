@@ -8,7 +8,7 @@ class Alert
   end
 
   def message
-    states = {"end" => "☀ Ended:", "start" => "☁ Started:"}
+    states = {"end" => "☀ Ended", "start" => "☁ Started"}
     message = "[#{@json['server_hostname']}][#{@json['plugin_name']}]#{states[@json['lifecycle']]}: " + @json['title'].strip
   end
 

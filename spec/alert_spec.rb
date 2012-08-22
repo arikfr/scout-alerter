@@ -1,3 +1,4 @@
+#encoding: utf-8
 require 'rspec'
 require_relative '../lib/alert.rb'
 
@@ -29,7 +30,7 @@ EOF
   describe "#message" do
     it "returns message for given payload" do
       alert = Alert.new(payload)
-      alert.message.should == "blade>Load Average>Started: Last minute met or exceeded 3.00 , increasing to 3.50 at 01:06AM" 
+      alert.message.should == "[blade][Load Average]☁ Started: Last minute met or exceeded 3.00 , increasing to 3.50 at 01:06AM" 
     end
 
     it "converts lifecycle start to started" do
