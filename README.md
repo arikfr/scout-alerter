@@ -9,19 +9,27 @@ Simple app to recieve webhooks calls from Scout and send alerts via Boxcar. Can 
 
 Clone the repository, and create a new Heroku app:
 
+```
 $ heroku create
+```
 
 Configure the Boxcar provider:
 
+```shell
 $ heroku set BOXCAR_KEY=… BOXCAR_SECRET=…
+```
 
 Add RedisToGo addon:
 
+```
 $ heroku addons:add redistogo:nano
+```
 
 Deploy:
 
+```
 $ git push heroku master
+```
 
 Once deployed, you can test that sending messages works by calling http://your-app-name.herokuapp.com/test_message -- this should issue a message via Boxcar.
 
